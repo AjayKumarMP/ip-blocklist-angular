@@ -1,0 +1,21 @@
+<div class="dashboard">
+    <form (ngSubmit)="sumbitForm($event)" class="example-form">
+        <div *ngFor="let ip of Ips; let i = index">
+            <mat-form-field class="example-full-width" [ngStyle]="{marginLeft: i==Ips.length-1 && i<maxIps-1?'5%':''}">
+                <input (keyup)="submitButtonText = 'SAVE'" name="IP" [formControl]="ip.address" matInput placeholder="Enter IP address" pattern="^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$"
+                    class="ipInput">
+                <mat-error *ngIf="ip.address.errors?.pattern">
+                    IP address Pattern Invalid
+                </mat-error>
+            </mat-form-field>
+            <button (click)="removeInput(i)" type="button" mat-button style="color: white;">
+                <h1>-</h1>
+            </button>
+            <button *ngIf="i==Ips.length-1 && i<maxIps-1" (click)="addInput()" type="button" mat-button style="color: white">
+                <h1>+</h1>
+            </button>
+        </div>
+        <br/>
+        <button type="submit" [disabled]="hasError()" class="save" mat-button style="background-color: #159d73d9;color: white">{{submitButtonText}}</button>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+<div style="position: absolute;top: 20%;left: 40%;">
+
+    <form (ngSubmit)="submitForm($event)">
+        <h4>User Type</h4>
+        <mat-form-field>
+            <mat-label style="color: white">Select User</mat-label>
+            <mat-select required [(ngModel)]="userType" name="user" style="color: black">
+                <mat-option style="color: white" value="premium">PREMIUM</mat-option>
+                <mat-option style="color: white" value="basic">BASIC</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+        <button type="submit" [disabled]="userType === ''" mat-button style="background-color: #159d73d9;color: white">Continue -></button>
+    </form>
+</div>
